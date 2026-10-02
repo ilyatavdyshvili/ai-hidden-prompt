@@ -1,1 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Hidden Prompt Detector API
+  version: 1.0.0
+paths:
+  /api/v1/health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: OK
 
+  /api/v1/analyze:
+    post:
+      summary: Analyze image
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "202":
+          description: Analysis job created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+
+  /api/v1/jobs/{job_id}:
+    get:
+      summary: Get job status
+      parameters:
+        - in: path
+          name: job_id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Job status
+
+  /api/v1/jobs/{job_id}/result:
+    get:
+      summary: Get analysis result
+      parameters:
+        - in: path
+          name: job_id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Analysis result
+
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        job_id:
+          type: string
+        status:
+          type: string
+          enum: [queued, preprocessing, detecting, ocr, classifying, aggregating, completed, failed, cancelled]
+
+    Finding:
+      type: object
+      properties:
+        bbox:
+          type: array
+          items:
+            type: number
+        text:
+          type: string
+        ocr_confidence:
+          type: number
+        prompt_probability:
+          type: number
+        scales:
+          type: array
+          items:
+            type: number
