@@ -14,16 +14,16 @@
 
 ## Структура
 
-- `docs/technical-specification.md` — основное техническое задание.
-- `docs/architecture/` — архитектура и описание пайплайна.
-- `docs/data/` — требования к обучающим и тестовым данным.
-- `docs/testing/` — стратегия валидации и тестирования.
-- `api/openapi.yaml` — контракт REST API.
-- `README.md` — краткое описание проекта.
+- `docs/technical-specification.md` - основное техническое задание.
+- `docs/architecture/` - архитектура и описание пайплайна.
+- `docs/data/` - требования к обучающим и тестовым данным.
+- `docs/testing/` - стратегия валидации и тестирования.
+- `api/openapi.yaml` - контракт REST API.
+- `README.md` - краткое описание проекта.
 
 ## Предлагаемый стек
 
-Python 3.11+, FastAPI, PyTorch, OpenCV, Pillow, NumPy, Tesseract/EasyOCR/PaddleOCR или современная OCR-модель, Hugging Face Transformers, Docker, PostgreSQL/MinIO — при необходимости хранения результатов и исходных файлов.
+Python 3.11+, FastAPI, PyTorch, OpenCV, Pillow, NumPy, Tesseract/EasyOCR/PaddleOCR или современная OCR-модель, Hugging Face Transformers, Docker, PostgreSQL/MinIO - при необходимости хранения результатов и исходных файлов.
 
 ## Важное ограничение
 
